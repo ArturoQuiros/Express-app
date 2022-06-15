@@ -1,0 +1,22 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "My first express app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturoQuiros/Express-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturoQuiros/Express-app/issues"
+  },
+  "homepage": "https://github.com/ArturoQuiros/Express-app#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
