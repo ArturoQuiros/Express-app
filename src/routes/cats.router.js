@@ -34,7 +34,10 @@ router.post("/cats", (req, res) => {
   const newCatName = req.body.name;
   const newCatColor = req.body.color;
 
-  cats.push({ name: newCatName, color: newCatColor });
+  cats.push({
+    name: newCatName,
+    color: newCatColor,
+  });
   res.status(StatusCodes.CREATED).json({ message: ReasonPhrases.CREATED });
 });
 

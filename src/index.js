@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const catsRouter = require("./routes/cats.router");
+const employeesRouter = require("./routes/employees.router");
+
 const port = 3000;
 
 app.use(express.json());
@@ -9,6 +11,7 @@ app.get("/", (req, res) => {
   res.send("Hello man!");
 });
 
+app.use("/", employeesRouter);
 app.use("/", catsRouter);
 
 app.listen(port, () => {
