@@ -2,16 +2,12 @@
 const express = require("express");
 const employees = require("../utils/employees.storage");
 const { ReasonPhrases, StatusCodes } = require("http-status-codes");
+const mongoosedb = require("../mongoose");
 
 const router = express.Router();
 
 //get
-router.get("/employees", (req, res) => {
-  res.status(StatusCodes.OK).json({
-    message: ReasonPhrases.OK,
-    data: employees,
-  });
-});
+router.get("/employees", mongoosedb.getEmployees);
 
 //custom get per name
 router.get("/employees/:first_name", (req, res) => {
@@ -51,23 +47,7 @@ router.get("/employeestag/:tag", (req, res) => {
 });
 
 //post
-router.post("/employees", (req, res) => {
-  const newFirst_Name = req.body.first_name;
-  const newLast_Name = req.body.last_name;
-  const newDesignation = req.body.designation;
-  const newTags = req.body.tags;
-  const newAge = req.body.age;
-
-  employees.push({
-    first_name: newFirst_Name,
-    last_name: newLast_Name,
-    designation: newDesignation,
-    tags: newTags,
-    age: newAge,
-  });
-
-  res.status(StatusCodes.CREATED).json({ message: ReasonPhrases.CREATED });
-});
+router.post("/employees", mongoosedb.addEmployee);
 
 //put
 router.put("/employees/:first_name", (req, res) => {
