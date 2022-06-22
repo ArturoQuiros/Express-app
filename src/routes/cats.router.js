@@ -2,16 +2,12 @@
 const express = require("express");
 const cats = require("../utils/cats.storage");
 const { ReasonPhrases, StatusCodes } = require("http-status-codes");
+const mongoosedb = require("../mongoose");
 
 const router = express.Router();
 
 //get
-router.get("/cats", (req, res) => {
-  res.status(StatusCodes.OK).json({
-    message: ReasonPhrases.OK,
-    data: cats,
-  });
-});
+router.get("/cats", mongoosedb.getCats);
 
 //custom get
 router.get("/cats/:name", (req, res) => {
@@ -30,16 +26,7 @@ router.get("/cats/:name", (req, res) => {
 });
 
 //post
-router.post("/cats", (req, res) => {
-  const newCatName = req.body.name;
-  const newCatColor = req.body.color;
-
-  cats.push({
-    name: newCatName,
-    color: newCatColor,
-  });
-  res.status(StatusCodes.CREATED).json({ message: ReasonPhrases.CREATED });
-});
+router.post("/cats", mongoosedb.addCat);
 
 //put
 router.put("/cats/:name", (req, res) => {
