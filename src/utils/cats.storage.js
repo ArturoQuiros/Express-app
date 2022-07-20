@@ -1,16 +1,7 @@
 let cats = [
-  {
-    name: "Luis",
-    color: "White",
-  },
-  {
-    name: "Roberto",
-    color: "Brown",
-  },
-  {
-    name: "Cristian",
-    color: "Orange",
-  },
-];
+    {name: "Jimmy", color: "rojo"},
+    {name: "Kim", color: "verde"},
+    {name: "Mike", color: "azul"}
+]
 
 module.exports = cats;
